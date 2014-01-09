@@ -2,16 +2,44 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+    
+    //setup grabber
+    grabber.initGrabber(640, 480);
+    
+    //setup slitscanner
+    ofImage distortionMap;
+    distortionMap.loadImage("distortion.png");
+    scanner.setup(640, 480, 30, OF_IMAGE_COLOR);
+    scanner.setDelayMap(distortionMap);
+    scanner.setBlending(true);
+    scanner.setTimeDelayAndWidth(30, 30);
+    
+    
 
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
+    
+    grabber.update();
+    
+    if(grabber.isFrameNew()){
+        
+        //add image to scanner
+        scanner.addImage(grabber);
+    }
+    
 
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
+    
+    //draw scanner
+    scanner.getOutputImage().draw(0,0);
+    
+    //draw grabber
+    grabber.draw(650, 0);
 
 }
 
