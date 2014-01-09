@@ -1,0 +1,4 @@
+ofxXmlSettings
+ofxJSON
+ofxSlitScan
+ofxUI
