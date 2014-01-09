@@ -2,6 +2,10 @@
 
 #include "ofMain.h"
 #include "ofxSlitScan.h"
+#include "ofxUI.h"
+#define VIDEO_WIDTH 640
+#define VIDEO_HEIGHT 480
+#define DRAW_SPACING 10
 
 class testApp : public ofBaseApp{
 
@@ -11,16 +15,27 @@ class testApp : public ofBaseApp{
 		void draw();
 
 		void keyPressed(int key);
-		void keyReleased(int key);
-		void mouseMoved(int x, int y );
-		void mouseDragged(int x, int y, int button);
-		void mousePressed(int x, int y, int button);
-		void mouseReleased(int x, int y, int button);
-		void windowResized(int w, int h);
-		void dragEvent(ofDragInfo dragInfo);
-		void gotMessage(ofMessage msg);
-    
+
+        //cam grabber
         ofVideoGrabber grabber;
+    
+        //slit scan
         ofxSlitScan scanner;
+    
+        //rutt etra
+        ofPixels vidPixels;
+        ofMesh mesh;
+        int xStep;
+        int yStep;
+        void drawMesh();
+    
+        //fbo
+        ofFbo fbo;
+        int fadeAmount;
+    
+        //ui
+        ofxUICanvas* gui;
+        void exit();
+        void guiEvent(ofxUIEventArgs &e);
 		
 };
