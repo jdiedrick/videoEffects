@@ -10,17 +10,24 @@
 class testApp : public ofBaseApp{
 
 	public:
+        //app
 		void setup();
 		void update();
 		void draw();
-
 		void keyPressed(int key);
+        int videoX;
+        int videoY;
+    
 
         //cam grabber
         ofVideoGrabber grabber;
+        void setupGrabber();
+        bool drawGrabber;
     
         //slit scan
         ofxSlitScan scanner;
+        void setupScanner();
+        bool drawScanner;
     
         //rutt etra
         ofPixels vidPixels;
@@ -28,14 +35,18 @@ class testApp : public ofBaseApp{
         int xStep;
         int yStep;
         void drawMesh();
+        void setupRuttEtra();
+        bool drawRuttEtra;
     
         //fbo
         ofFbo fbo;
         int fadeAmount;
+        void setupFBO();
     
         //ui
         ofxUICanvas* gui;
         void exit();
         void guiEvent(ofxUIEventArgs &e);
+        void setupGUI();
 		
 };
